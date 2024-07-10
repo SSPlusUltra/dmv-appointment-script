@@ -5,11 +5,14 @@ import preferredDayList from "../Assets/preferredDay";
 import * as log from "../Log";
 import "dotenv/config";
 import dayjs from "dayjs";
+import { resolve } from "path";
 
 const parseConfig = (): Config => {
-    if (!existsSync("./config.yml")) {
-        log.error("Not found config.yml file");
-        process.exit(0);
+    const configFilePath = resolve(__dirname, "../Config/config.yml");
+
+    if (!existsSync(configFilePath)) {
+        log.error("Not found config.yml file at path");
+        process.exit(1);
     }
 
     const file = readFileSync("././config.yml", "utf8");
