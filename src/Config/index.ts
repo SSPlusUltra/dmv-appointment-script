@@ -7,7 +7,7 @@ import "dotenv/config";
 import dayjs from "dayjs";
 
 const parseConfig = (): Config => {
-    if (!existsSync("../config.yml")) {
+    if (!existsSync("./config.yml")) {
         log.error("Not found config.yml file");
         process.exit(0);
     }
